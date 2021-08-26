@@ -1,0 +1,12 @@
+<button type="button" 
+(click)="setHabilitarBotonMostrar()" >
+{{setTextoBotonMostrar()}}
+</button>
+<div class="card">
+  <div class="card-header">
+    <h1>Tecnologías</h1>
+  </div>
+</div>
+<ul class="list-group"i *ngIf="habilitar">
+  <li class="list-group-item" *ngFor="let tec of listaTecnologias">{{tec}}</li>
+</ul>

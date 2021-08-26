@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Empleados</h1>
+  </div>
+  <div class="card-body">
+
+  <div *ngIf="listaEmpleados!.length>0">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">nombre</th>
+        <th scope="col">apellido</th>
+        <th scope="col">dni</th>
+        <th scope="col">direccion</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let empleado of listaEmpleados">
+          <td>{{empleado.id}}</td>
+          <td>{{empleado.nombre}}</td>
+          <td>{{empleado.apellido}}</td>
+          <td>{{empleado.dni}}</td>
+          <td>{{empleado.direccion}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="listaEmpleados!.length==0">
+    <p>Lista Vacia</p>
+  </div>
+  </div>
+
+</div>
