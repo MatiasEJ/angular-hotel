@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { TecnologiasComponent } from './tecnologias/tecnologias.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { ButtonMostrarComponent } from './button-mostrar/button-mostrar.component';
+import { EmpleadoService } from './empleados/empleado.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { ButtonMostrarComponent } from './button-mostrar/button-mostrar.componen
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [EmpleadoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
