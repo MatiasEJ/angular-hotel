@@ -8,6 +8,14 @@ import { TecnologiasComponent } from './tecnologias/tecnologias.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { ButtonMostrarComponent } from './button-mostrar/button-mostrar.component';
 import { EmpleadoService } from './empleados/empleado.service';
+import { Router, RouterModule, Routes} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+
+const routes: Routes =[
+  {path:'',redirectTo:'/empleados', pathMatch:'full'},
+  {path:'tecnologias',component:TecnologiasComponent},
+  {path:'empleados',component: EmpleadosComponent}
+]
 
 @NgModule({
   declarations: [
@@ -19,7 +27,9 @@ import { EmpleadoService } from './empleados/empleado.service';
     ButtonMostrarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [EmpleadoService],
   bootstrap: [AppComponent]
