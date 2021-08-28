@@ -16,7 +16,8 @@ import { FormsModule} from '@angular/forms';
 const routes: Routes =[
   {path:'',redirectTo:'/empleados', pathMatch:'full'},
   {path:'tecnologias',component:TecnologiasComponent},
-  {path:'empleados',component: EmpleadosComponent}
+  {path:'empleados',component: EmpleadosComponent},
+  {path:'/empleados/altaEmpleados',component: FormComponent}
 ]
 
 @NgModule({

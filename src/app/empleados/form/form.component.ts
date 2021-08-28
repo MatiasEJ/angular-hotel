@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Empleado } from '../empleado';
 
 @Component({
   selector: 'app-form',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  private 
+
+  TITULO: string = "Alta Cliente";
+  private empleado: Empleado = new Empleado();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public create():void{
+
+      console.log("clickeado");
+      console.log(this.empleado);
   }
 
 }
