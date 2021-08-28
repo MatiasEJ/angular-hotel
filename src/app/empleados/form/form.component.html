@@ -1,0 +1,43 @@
+<section class="py-4 bg-light mb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            <h1><i class="bi-file-person"></i>Control Empleados</h1>
+          </div>
+          <div class="card-body">
+            <form>
+
+              <div class="input-group mb-3">
+                <label class="input-group-text">Nombre</label>
+                <input class="form-control" type="text" name="nombre" ngModel="empleado.nombre" />
+                <span class="alert-danger input-group-text">errors?</span>
+              </div>
+
+              <div class="input-group mb-3">
+                <label class="input-group-text">Apellido</label>
+                <input class="form-control" type="text" name="apellido" ngModel="empleado.apellido" />
+                <span class="alert-danger input-group-text">errors?</span>
+              </div>
+
+              <div class="input-group mb-3">
+                <label class="input-group-text">DNI</label>
+                <input class="form-control" type="text" name="dni" ngModel="empleado.dni" />
+                <span class="alert-danger input-group-text">errors?</span>
+              </div>
+
+              <div class="input-group mb-3">
+                <input class="form-control" type="submit" name="guardar" />
+              </div>
+
+            </form>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

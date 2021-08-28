@@ -10,6 +10,8 @@ import { ButtonMostrarComponent } from './button-mostrar/button-mostrar.componen
 import { EmpleadoService } from './empleados/empleado.service';
 import { Router, RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import { FormComponent } from './empleados/form/form.component';
+import { FormsModule} from '@angular/forms'; 
 
 const routes: Routes =[
   {path:'',redirectTo:'/empleados', pathMatch:'full'},
@@ -24,10 +26,12 @@ const routes: Routes =[
     FooterComponent,
     TecnologiasComponent,
     EmpleadosComponent,
-    ButtonMostrarComponent
+    ButtonMostrarComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
