@@ -11,19 +11,19 @@
 
               <div class="input-group mb-3">
                 <label class="input-group-text">Nombre</label>
-                <input class="form-control" type="text" name="nombre" ngModel="empleado.nombre" />
+                <input class="form-control" type="text" name="nombre" [(ngModel)]="empleado.nombre" />
                 <span class="alert-danger input-group-text">errors?</span>
               </div>
 
               <div class="input-group mb-3">
                 <label class="input-group-text">Apellido</label>
-                <input class="form-control" type="text" name="apellido" ngModel="empleado.apellido" />
+                <input class="form-control" type="text" name="apellido" [(ngModel)]="empleado.apellido" />
                 <span class="alert-danger input-group-text">errors?</span>
               </div>
 
               <div class="input-group mb-3">
                 <label class="input-group-text">DNI</label>
-                <input class="form-control" type="text" name="dni" ngModel="empleado.dni" />
+                <input class="form-control" type="text" name="dni" [(ngModel)]="empleado.dni" />
                 <span class="alert-danger input-group-text">errors?</span>
               </div>
 

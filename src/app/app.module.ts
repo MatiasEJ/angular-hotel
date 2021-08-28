@@ -17,7 +17,7 @@ const routes: Routes =[
   {path:'',redirectTo:'/empleados', pathMatch:'full'},
   {path:'tecnologias',component:TecnologiasComponent},
   {path:'empleados',component: EmpleadosComponent},
-  {path:'/empleados/altaEmpleados',component: FormComponent}
+  {path:'empleados/altaEmpleados',component: FormComponent}
 ]
 
 @NgModule({

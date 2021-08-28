@@ -4,7 +4,7 @@
   </div>
   <div class="card-body">
 
-  <div *ngIf="listaEmpleados!.length>0">
+  <div *ngIf="listaEmpleados?.length ">
     <table class="table">
       <caption>Tabla de empleados</caption>
       <thead>
@@ -30,7 +30,7 @@
       </tbody>
     </table>
   </div>
-  <div *ngIf="listaEmpleados!.length==0">
+  <div *ngIf="!(listaEmpleados!.length)">
     <p>Lista Vacia</p>
   </div>
   </div>

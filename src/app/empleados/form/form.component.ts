@@ -9,7 +9,7 @@ import { Empleado } from '../empleado';
 export class FormComponent implements OnInit {
 
   TITULO: string = "Alta Cliente";
-  private empleado: Empleado = new Empleado();
+  empleado: Empleado = new Empleado();
 
   constructor() { }
 
@@ -21,5 +21,6 @@ export class FormComponent implements OnInit {
       console.log("clickeado");
       console.log(this.empleado);
   }
+
 
 }
