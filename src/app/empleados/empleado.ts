@@ -4,5 +4,6 @@ export class Empleado {
   apellido: string |undefined;
   dni: string | undefined;
   direccion: string | undefined;
+  fechaNacimiento: string | undefined;
 
 }

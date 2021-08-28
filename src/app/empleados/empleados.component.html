@@ -13,6 +13,7 @@
         <th scope="col">apellido</th>
         <th scope="col">dni</th>
         <th scope="col">direccion</th>
+        <th scope="col">Fecha de Nacimiento</th>
       </tr>
       </thead>
       <tbody>
@@ -22,6 +23,7 @@
           <td>{{empleado.apellido}}</td>
           <td>{{empleado.dni}}</td>
           <td>{{empleado.direccion}}</td>
+          <td>{{empleado.fechaNacimiento!=null ? empleado.fechaNacimiento:"-"}}</td>
         </tr>
 
       </tbody>
