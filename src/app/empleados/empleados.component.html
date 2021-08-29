@@ -4,35 +4,39 @@
   </div>
   <div class="card-body">
 
-  <div *ngIf="listaEmpleados?.length ">
-    <table class="table">
-      <caption>Tabla de empleados</caption>
-      <thead>
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">nombre</th>
-        <th scope="col">apellido</th>
-        <th scope="col">dni</th>
-        <th scope="col">direccion</th>
-        <th scope="col">Fecha de Nacimiento</th>
-      </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let empleado of listaEmpleados">
-          <td>{{empleado.id}}</td>
-          <td>{{empleado.nombre}}</td>
-          <td>{{empleado.apellido}}</td>
-          <td>{{empleado.dni}}</td>
-          <td>{{empleado.direccion}}</td>
-          <td>{{empleado.fechaNacimiento!=null ? empleado.fechaNacimiento:"-"}}</td>
-        </tr>
+    <div *ngIf="listaEmpleados?.length ">
+      <table class="table">
+        <caption>Tabla de empleados</caption>
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">nombre</th>
+            <th scope="col">apellido</th>
+            <th scope="col">dni</th>
+            <th scope="col">direccion</th>
+            <th scope="col">Fecha de Nacimiento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empleado of listaEmpleados">
+            <td>{{empleado.id}}</td>
+            <td>{{empleado.nombre}}</td>
+            <td>{{empleado.apellido}}</td>
+            <td>{{empleado.dni}}</td>
+            <td>{{empleado.direccion}}</td>
+            <td>{{empleado.fechaNacimiento!=null ? empleado.fechaNacimiento:"-"}}</td>
+            <td>
+              <button class="btn btn-primary" type="submit" [routerLink]="['/empleados/altaEmpleados',empleado.id]"
+                name="editar">Editar</button>
+            </td>
+          </tr>
 
-      </tbody>
-    </table>
-  </div>
-  <div *ngIf="!(listaEmpleados?.length)">
-    <p>Lista Vacia</p>
-  </div>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="!(listaEmpleados?.length)">
+      <p>Lista Vacia</p>
+    </div>
   </div>
 
 </div>

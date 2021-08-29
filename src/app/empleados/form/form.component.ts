@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Empleado } from '../empleado';
 import { EmpleadoService } from '../empleado.service';
-import {Router} from '@angular/router';
+import {Router,ActivatedRoute} from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form',
@@ -9,18 +10,44 @@ import {Router} from '@angular/router';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
-  TITULO: string = 'Alta Cliente';
+  TITULO: string = 'Alta Empleado';
   empleado: Empleado = new Empleado();
 
-  constructor(private service: EmpleadoService,private router:Router) {}
+  constructor(private service: EmpleadoService,
+    private router:Router, 
+    private activatedRoute:ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cargarEmpleado();
+  }
+
+  private cargarEmpleado():void{
+    this.activatedRoute.params.subscribe(params =>{
+      let id = params['id'];
+      if(id){
+        this.service.getEmpleado(id).subscribe( empleado => this.empleado = empleado);
+      }
+
+    })
+  }
 
   public create(): void {
     this.service.create(this.empleado).subscribe(
-      () => this.router.navigate(['/empleados'])
+      (empleado) => {
+        this.router.navigate(['/empleados']);
+        swal.fire('Empleado guardado.',`${empleado.nombre} creado con exito.`,'success');
+      }
     );
     console.log(this.empleado);
   }
+
+  public update():void{
+    this.service.update(this.empleado).subscribe(empleado => {
+      this.router.navigate(['/empleados']);
+      swal.fire('Empleado actualizado.',`${empleado.nombre} actualizado con exito`,'success' );
+    });
+  }
+
+
 
 }
