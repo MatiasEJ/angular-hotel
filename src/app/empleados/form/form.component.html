@@ -7,7 +7,7 @@
             <h1><i class="bi-file-person"></i>{{TITULO}}</h1>
           </div>
           <div class="card-body">
-            <form>
+            <form #empleadoForm="ngForm">
 
               <div class="input-group mb-3">
                 <label class="input-group-text">Nombre</label>
@@ -51,9 +51,9 @@
               </div>
 
               <div class="input-group mb-3">
-                <button class="btn btn-primary" (click)="create()" *ngIf="!empleado.id else elseBlock">Crear</button>
+                <button class="btn btn-primary" [disabled]="!empleadoForm.form.valid" (click)="create()" *ngIf="!empleado.id else elseBlock">Crear</button>
                 <ng-template #elseBlock>
-                  <button class="btn btn-primary" (click)="update()">Actualizar</button>
+                  <button class="btn btn-primary" [disabled]="!empleadoForm.form.valid" (click)="update()">Actualizar</button>
                 </ng-template>
               </div>
 
