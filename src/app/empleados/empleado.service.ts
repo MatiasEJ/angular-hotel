@@ -1,18 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Empleado } from './empleado';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UrlEndPoints } from '../util/endPoints';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmpleadoService {
-  private urlEndPoint:string = UrlEndPoints.empleados;
 
-  constructor(private http: HttpClient) { }
-  
-  getEmpleados():Observable<Empleado[]>{
-      return this.http.get<Empleado[]>(this.urlEndPoint); 
+  private httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin':'*'
+  });
+
+  constructor(private http: HttpClient) {}
+
+  getEmpleados(): Observable<Empleado[]> {
+    return this.http.get<Empleado[]>(UrlEndPoints.empleados);
+  }
+
+  create(empleado: Empleado): Observable<Empleado> {
+    return this.http.post<Empleado>(UrlEndPoints.empleado, empleado, {
+      headers: this.httpHeaders,
+    });
   }
 }

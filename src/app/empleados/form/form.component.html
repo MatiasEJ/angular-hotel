@@ -28,6 +28,18 @@
               </div>
 
               <div class="input-group mb-3">
+                <label class="input-group-text">Direccion</label>
+                <input class="form-control" type="text" name="direccion" [(ngModel)]="empleado.direccion" />
+                <span class="alert-danger input-group-text">errors?</span>
+              </div>
+
+              <div class="input-group mb-3">
+                <label class="input-group-text">Fecha Nacimiento</label>
+                <input class="form-control" type="text" name="fechaNacimiento" [(ngModel)]="empleado.fechaNacimiento" />
+                <span class="alert-danger input-group-text">errors?</span>
+              </div>
+              
+              <div class="input-group mb-3">
                 <input class="form-control" type="submit" name="guardar" />
               </div>
 
