@@ -31,7 +31,10 @@ export class EmpleadosComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.empleadoService.delete(empleado.id).subscribe((res) => {
-          Swal.fire('Deleted!', 'Your empleado has been deleted.', 'success');
+          if(this.listaEmpleados){
+            this.listaEmpleados = this.listaEmpleados.filter(empl=> empl!==empleado);
+            Swal.fire('Deleted!', 'Your empleado has been deleted.', 'success');
+          }
         });
       }
     });

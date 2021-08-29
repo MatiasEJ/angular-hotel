@@ -5,7 +5,7 @@
   <div class="card-body">
 
     <div *ngIf="listaEmpleados?.length ">
-      <table class="table">
+      <table class="table table-bordered table-striped">
         <caption>Tabla de empleados</caption>
         <thead>
           <tr>
@@ -29,13 +29,16 @@
               <button class="btn btn-primary" type="submit" [routerLink]="['/empleados/altaEmpleados',empleado.id]"
                 name="editar">Editar</button>
             </td>
+            <td>
+              <button class="btn btn-danger" type="submit" (click)="delete(empleado)" name="editar">Eliminar</button>
+            </td>
           </tr>
 
         </tbody>
       </table>
     </div>
     <div *ngIf="!(listaEmpleados?.length)">
-      <p>Lista Vacia</p>
+      <p class="alertr alert-info">Lista Vacia</p>
     </div>
   </div>
 
