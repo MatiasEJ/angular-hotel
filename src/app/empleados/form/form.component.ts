@@ -25,7 +25,7 @@ export class FormComponent implements OnInit {
     this.activatedRoute.params.subscribe(params =>{
       let id = params['id'];
       if(id){
-        this.service.getEmpleado(id).subscribe( empleado => this.empleado = empleado);
+        this.service.getEmpleadoById(id).subscribe( empleado => this.empleado = empleado);
       }
 
     })
@@ -42,9 +42,9 @@ export class FormComponent implements OnInit {
   }
 
   public update():void{
-    this.service.update(this.empleado).subscribe(empleado => {
+    this.service.update(this.empleado).subscribe(json => {
       this.router.navigate(['/empleados']);
-      swal.fire('Empleado actualizado.',`${empleado.nombre} actualizado con exito`,'success' );
+      swal.fire('Empleado actualizado.',`${json.mensaje}${json.empleado.nombre}`,'success' );
     });
   }
 

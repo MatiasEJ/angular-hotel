@@ -17,8 +17,19 @@
 
               <div class="input-group mb-3">
                 <label class="input-group-text">Apellido</label>
-                <input class="form-control" type="text" name="apellido" [(ngModel)]="empleado.apellido" />
-                <span class="alert-danger input-group-text">errors?</span>
+                <input class="form-control" type="text" #apellido="ngModel" name="apellido" required minlength="4"
+                  [(ngModel)]="empleado.apellido" />
+                <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                  <span class="alert-danger input-group-text" *ngIf="apellido.errors?.required">Apellido es
+                    requerido</span>
+                  <span class="alert-danger input-group-text" *ngIf="apellido.errors?.minlength">Debe tener 4 o mas
+                    caracteres</span>
+                </div>
+                <div *ngIf="apellido.valid && apellido.touched">
+                  <span class="alert-success input-group-text" *ngIf="apellido"><i class="bi bi-check"></i></span>
+                  <span class="alert-success input-group-text" *ngIf="apellido.errors?.minlength">Debe tener 4 o mas
+                    caracteres</span>
+                </div>
               </div>
 
               <div class="input-group mb-3">
