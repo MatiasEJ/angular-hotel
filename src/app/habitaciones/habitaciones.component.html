@@ -1,1 +1,37 @@
-<p>habitaciones works!</p>
+<div class="card">
+  <div class="card-header">
+    <h1>Empleados</h1>
+  </div>
+  <div class="card-body">
+
+    <div *ngIf="listaHabitaciones?.length ">
+      <table class="table table-bordered table-striped">
+        <caption>Tabla de empleados</caption>
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Numero ident</th>
+            <th scope="col">nombre</th>
+            <th scope="col">Tipo Habitacion</th>
+            <th scope="col">Tematica</th>
+            <th scope="col">Precio por noche</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let habitacion of listaHabitaciones">
+            <td>{{habitacion.id}}</td>
+            <td>{{habitacion.numeroIden}}</td>
+            <td>{{habitacion.tipoHab}}</td>
+            <td>{{habitacion.tematica}}</td>
+            <td>{{habitacion.precioNoche}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="!(listaHabitaciones?.length)">
+      <p class="alertr alert-info">Lista Vacia</p>
+    </div>
+  </div>
+
+</div>
