@@ -24,7 +24,7 @@
             <td>{{empleado.apellido}}</td>
             <td>{{empleado.dni}}</td>
             <td>{{empleado.direccion}}</td>
-            <td>{{empleado.fechaNacimiento!=null ? empleado.fechaNacimiento:"-"}}</td>
+            <td>{{empleado.fechaNacimiento}}</td>
             <td>
               <button class="btn btn-primary" type="submit" [routerLink]="['/empleados/altaEmpleados',empleado.id]"
                 name="editar">Editar</button>

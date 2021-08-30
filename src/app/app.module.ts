@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -12,6 +11,10 @@ import { Router, RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { FormComponent } from './empleados/form/form.component';
 import { FormsModule} from '@angular/forms'; 
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import { HabitacionesComponent } from './habitaciones/habitaciones.component'
+registerLocaleData(localeEs,'es');
 
 const routes: Routes =[
   {path:'',redirectTo:'/empleados', pathMatch:'full'},
@@ -29,7 +32,8 @@ const routes: Routes =[
     TecnologiasComponent,
     EmpleadosComponent,
     ButtonMostrarComponent,
-    FormComponent
+    FormComponent,
+    HabitacionesComponent
   ],
   imports: [
     BrowserModule,

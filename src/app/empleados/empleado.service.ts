@@ -3,8 +3,10 @@ import { Observable, of, throwError } from 'rxjs';
 import { Empleado } from './empleado';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UrlEndPoints } from '../util/endPoints';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map,tap } from 'rxjs/operators';
+import {formatDate} from '@angular/common';
 import { Router } from '@angular/router';
+
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -19,7 +21,19 @@ export class EmpleadoService {
   constructor(private http: HttpClient, private router: Router) {}
 
   getEmpleados(): Observable<Empleado[]> {
-    return this.http.get<Empleado[]>(UrlEndPoints.EMPLEADOS);
+    return this.http.get<Empleado[]>(UrlEndPoints.EMPLEADOS).pipe(
+      map(res =>{
+        let empleados = res;
+        return empleados.map(empleado => {
+          empleado.nombre = empleado.nombre?.toUpperCase();
+          if(empleado.fechaNacimiento != null){
+
+            empleado.fechaNacimiento = formatDate(empleado.fechaNacimiento,'dd-MM-yyyy','en-US');
+          }
+          return empleado;
+        })
+      })
+    );
   }
 
   create(empleado: Empleado): Observable<Empleado> {

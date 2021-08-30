@@ -49,9 +49,8 @@
               </div>
 
               <div class="input-group mb-3">
-                <label class="input-group-text">Fecha Nacimiento</label>
-                <input class="form-control" type="text" name="fechaNacimiento" [(ngModel)]="empleado.fechaNacimiento" />
-                <span class="alert-danger input-group-text">errors?</span>
+                <label class="input-group-text">Fecha de Nacimiento</label> 
+                <input [(ngModel)]="empleado.fechaNacimiento"  class="form-control" type="Date" name="fechaNacimiento">
               </div>
 
               <div class="input-group mb-3">
