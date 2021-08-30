@@ -28,8 +28,12 @@ export class EmpleadoService {
         headers: this.httpHeaders,
       })
       .pipe(
-        map( (res: any) => res.empleado as Empleado),
+        map((res: any) => res.empleado as Empleado),
         catchError((e) => {
+          if (e.status == 400) {
+            return throwError(e);
+          }
+
           console.log(e.error.mensaje);
           Swal.fire(e.error.mensaje, e.error.error, 'error');
           return throwError(e);
