@@ -21,7 +21,8 @@ const routes: Routes =[
   {path:'tecnologias',component:TecnologiasComponent},
   {path:'empleados',component: EmpleadosComponent},
   {path:'empleados/altaEmpleados',component: FormComponent},
-  {path:'empleados/altaEmpleados/:id',component: FormComponent}
+  {path:'empleados/altaEmpleados/:id',component: FormComponent},
+  {path:'habitaciones',component: HabitacionesComponent},
 ]
 
 @NgModule({

@@ -3,7 +3,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { Empleado } from './empleado';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UrlEndPoints } from '../util/endPoints';
-import { catchError, map,tap } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import {formatDate} from '@angular/common';
 import { Router } from '@angular/router';
 
