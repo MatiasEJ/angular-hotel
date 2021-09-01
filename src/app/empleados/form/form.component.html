@@ -1,5 +1,5 @@
 <ul *ngIf="listErrors?.length" class="list-group">
-  <li class="list-group-item list-group-item-danger" *ngFor="let err of listErrors" >{{err}}</li>
+  <li class="list-group-item list-group-item-danger" *ngFor="let err of listErrors">{{err}}</li>
 </ul>
 
 <section class="py-4 bg-light mb-4">
@@ -49,14 +49,16 @@
               </div>
 
               <div class="input-group mb-3">
-                <label class="input-group-text">Fecha de Nacimiento</label> 
-                <input [(ngModel)]="empleado.fechaNacimiento"  class="form-control" type="Date" name="fechaNacimiento">
+                <label class="input-group-text">Fecha de Nacimiento</label>
+                <input [(ngModel)]="empleado.fechaNacimiento" class="form-control" type="Date" name="fechaNacimiento">
               </div>
 
               <div class="input-group mb-3">
-                <button class="btn btn-primary" [disabled]="!empleadoForm.form.valid" (click)="create()" *ngIf="!empleado.id else elseBlock">Crear</button>
+                <button class="btn btn-primary" [disabled]="!empleadoForm.form.valid" (click)="create()"
+                  *ngIf="!empleado.id else elseBlock">Crear</button>
                 <ng-template #elseBlock>
-                  <button class="btn btn-primary" [disabled]="!empleadoForm.form.valid" (click)="update()">Actualizar</button>
+                  <button class="btn btn-primary" [disabled]="!empleadoForm.form.valid"
+                    (click)="update()">Actualizar</button>
                 </ng-template>
               </div>
 

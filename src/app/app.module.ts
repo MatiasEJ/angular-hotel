@@ -14,7 +14,12 @@ import { FormsModule} from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { HabitacionesComponent } from './habitaciones/habitaciones.component';
-import { PaginatorComponent } from './paginator/paginator.component'
+import { PaginatorComponent } from './paginator/paginator.component';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations'
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from  '@angular/material/core';
+
+
 registerLocaleData(localeEs,'es');
 
 const routes: Routes =[
@@ -43,7 +48,11 @@ const routes: Routes =[
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    NoopAnimationsModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [EmpleadoService],
   bootstrap: [AppComponent]
