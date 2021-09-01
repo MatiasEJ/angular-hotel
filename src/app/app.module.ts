@@ -13,13 +13,15 @@ import { FormComponent } from './empleados/form/form.component';
 import { FormsModule} from '@angular/forms'; 
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import { HabitacionesComponent } from './habitaciones/habitaciones.component'
+import { HabitacionesComponent } from './habitaciones/habitaciones.component';
+import { PaginatorComponent } from './paginator/paginator.component'
 registerLocaleData(localeEs,'es');
 
 const routes: Routes =[
   {path:'',redirectTo:'/empleados', pathMatch:'full'},
   {path:'tecnologias',component:TecnologiasComponent},
   {path:'empleados',component: EmpleadosComponent},
+  {path:'empleados/page/:page',component: EmpleadosComponent},
   {path:'empleados/altaEmpleados',component: FormComponent},
   {path:'empleados/altaEmpleados/:id',component: FormComponent},
   {path:'habitaciones',component: HabitacionesComponent},
@@ -34,7 +36,8 @@ const routes: Routes =[
     EmpleadosComponent,
     ButtonMostrarComponent,
     FormComponent,
-    HabitacionesComponent
+    HabitacionesComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,

@@ -40,6 +40,6 @@
     <div *ngIf="!(listaEmpleados?.length)">
       <p class="alertr alert-info">Lista Vacia</p>
     </div>
+    <app-paginator *ngIf="paginator" [paginator]="paginator"></app-paginator>
   </div>
-
 </div>

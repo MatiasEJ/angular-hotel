@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Empleado } from './empleado';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UrlEndPoints } from '../util/endPoints';
@@ -20,18 +20,18 @@ export class EmpleadoService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  getEmpleados(): Observable<Empleado[]> {
-    return this.http.get<Empleado[]>(UrlEndPoints.EMPLEADOS).pipe(
-      map(res =>{
-        let empleados = res;
-        return empleados.map(empleado => {
+  getEmpleados(page:number): Observable<any> {
+    return this.http.get(UrlEndPoints.EMPLEADOS_PAGES + page).pipe(
+      map((response:any) =>{
+        (response.content as Empleado[]).forEach(empleado => {
           empleado.nombre = empleado.nombre?.toUpperCase();
           if(empleado.fechaNacimiento != null){
 
             empleado.fechaNacimiento = formatDate(empleado.fechaNacimiento,'dd-MM-yyyy','en-US');
           }
           return empleado;
-        })
+        });
+        return response;
       })
     );
   }
