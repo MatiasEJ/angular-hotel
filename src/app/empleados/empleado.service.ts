@@ -93,4 +93,25 @@ export class EmpleadoService {
         })
       );
   }
+
+
+  uploadFoto(archivo: File, id:any):Observable<Empleado>{
+    let formData = new FormData();
+    
+    formData.append("archivo",archivo);
+    formData.append("id",id);
+    
+    return this.http.post<Empleado>(`${UrlEndPoints.EMPLEADO_UPLOAD}`,formData)
+    .pipe(
+      map( (response:any) => response.empleado as Empleado),
+      catchError((e) => {
+        console.log(e.error.mensaje);
+        Swal.fire('Error al subir imagen: ', e.error.mensaje,);
+        return throwError(e);
+      })
+
+    );
+  }
+
+
 }

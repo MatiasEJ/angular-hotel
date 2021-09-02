@@ -19,7 +19,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let empleado of listaEmpleados">
-            <td>{{empleado.id}}</td>
+            <td><button class="btn btn-success" [routerLink]="['/empleados/detalle',empleado.id]">{{empleado.id}}</button> </td>
             <td>{{empleado.nombre}}</td>
             <td>{{empleado.apellido}}</td>
             <td>{{empleado.dni}}</td>

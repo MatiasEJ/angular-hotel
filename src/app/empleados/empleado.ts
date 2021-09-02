@@ -5,5 +5,6 @@ export class Empleado {
   dni: string | undefined;
   direccion: string | undefined;
   fechaNacimiento: string | undefined;
+  foto:string | undefined;
 
 }

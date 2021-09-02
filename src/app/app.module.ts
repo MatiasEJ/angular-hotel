@@ -18,6 +18,7 @@ import { PaginatorComponent } from './paginator/paginator.component';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations'
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from  '@angular/material/core';
+import { DetallesComponent } from './empleados/detalles/detalles.component';
 
 
 registerLocaleData(localeEs,'es');
@@ -29,6 +30,7 @@ const routes: Routes =[
   {path:'empleados/page/:page',component: EmpleadosComponent},
   {path:'empleados/altaEmpleados',component: FormComponent},
   {path:'empleados/altaEmpleados/:id',component: FormComponent},
+  {path:'empleados/detalle/:id',component: DetallesComponent},
   {path:'habitaciones',component: HabitacionesComponent},
 ]
 
@@ -42,7 +44,8 @@ const routes: Routes =[
     ButtonMostrarComponent,
     FormComponent,
     HabitacionesComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    DetallesComponent
   ],
   imports: [
     BrowserModule,
