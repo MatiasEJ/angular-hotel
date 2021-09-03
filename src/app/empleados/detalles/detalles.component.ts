@@ -1,9 +1,10 @@
 import { HttpEventType } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Empleado } from '../empleado';
 import { EmpleadoService } from '../empleado.service';
+import { ModalService } from './modal.service';
 
 @Component({
   selector: 'app-detalles',
@@ -11,32 +12,27 @@ import { EmpleadoService } from '../empleado.service';
   styleUrls: ['./detalles.component.css'],
 })
 export class DetallesComponent implements OnInit {
-  empleado: Empleado | undefined;
+  @Input() empleado: Empleado | undefined;
   private _progreso:number = 0;
   private _fotoSeleccionada: File | undefined;
+  titulo:string = "Detalles";
 
   constructor(
     private empleadoService: EmpleadoService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private _modalService: ModalService
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((params) => {
-      let id: number | undefined;
-      if (typeof params.get('id') != 'undefined' && params.get('id')) {
-        id = +params.get('id')!;
-      }
-        this.empleadoService
-          .getEmpleadoById(id)
-          .subscribe((empleado) => (this.empleado = empleado));
-      
-    });
   }
   public get progreso():number{
     return this._progreso;
   }
   public get fotoSeleccionada():File|undefined{
     return this._fotoSeleccionada;
+  }
+  public get modalService(){
+    return this._modalService;
   }
 
   seleccionarFoto(event: any): void {
@@ -51,8 +47,13 @@ export class DetallesComponent implements OnInit {
     
   }
 
+  cerrarModal(){
+    this._modalService.cerrarModal(); 
+    this._progreso = 0;
+  }
+
   upload(): void {
-    if(!(this._fotoSeleccionada)){
+    if(!(this._fotoSeleccionada) || typeof this._fotoSeleccionada== 'undefined' ){
         Swal.fire("Debe seleccionar una foto", 'error');
     }else{
     this.empleadoService
