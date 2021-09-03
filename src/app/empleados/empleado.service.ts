@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Empleado } from './empleado';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { UrlEndPoints } from '../util/endPoints';
 import { catchError, map } from 'rxjs/operators';
 import {formatDate} from '@angular/common';
@@ -95,22 +95,18 @@ export class EmpleadoService {
   }
 
 
-  uploadFoto(archivo: File, id:any):Observable<Empleado>{
+  uploadFoto(archivo: File, id:any):Observable<HttpEvent<{}>>{
     let formData = new FormData();
     
     formData.append("archivo",archivo);
     formData.append("id",id);
-    
-    return this.http.post<Empleado>(`${UrlEndPoints.EMPLEADO_UPLOAD}`,formData)
-    .pipe(
-      map( (response:any) => response.empleado as Empleado),
-      catchError((e) => {
-        console.log(e.error.mensaje);
-        Swal.fire('Error al subir imagen: ', e.error.mensaje,);
-        return throwError(e);
-      })
 
-    );
+    const req = new HttpRequest('POST','UrlEndPoints.EMPLEADO_UPLOAD',formData,{
+      reportProgress:true
+    });
+    
+    return this.http.request<Empleado>(req)
+
   }
 
 

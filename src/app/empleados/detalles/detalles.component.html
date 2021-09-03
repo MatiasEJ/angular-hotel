@@ -15,12 +15,20 @@
                   <li class="list-group-item">{{empleado?.dni}}</li>
                   <li class="list-group-item">{{empleado?.direccion}}</li>
                 </ul>
-                <div class="input-group">
+                <div class="input-group mb-3">
                   <input (change)="seleccionarFoto($event)" type="file" class="form-control" id="inputGroupFile04"
                     aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                  <button (click)="upload()" class="btn btn-outline-secondary btn-sm" type="button"
+                  <button [disabled]="!fotoSeleccionada" (click)="upload()" class="btn btn-outline-secondary btn-sm" type="button"
                     id="inputGroupFileAddon04">Subir</button>
                 </div>
+                <div *ngIf="progreso > 0 " class="progress" style="height: 40px;">
+                  <div class="progress-bar progress-bar-striped" role="progressbar" [ngStyle]="{width: progreso +'%'}"  attr.aria-valuenow="{{progreso}}" aria-valuemin="0" aria-valuemax="100">
+                    {{progreso}}%
+                  </div>
+                </div>
+        
+
+
 
               </div>
               <div class="col-md">
