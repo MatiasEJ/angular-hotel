@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Empleado } from './empleado';
 import { EmpleadoService } from './empleado.service';
+import { ModalService } from './detalles/modal.service';
 
 @Component({
   selector: 'app-empleados',
@@ -10,12 +11,14 @@ import { EmpleadoService } from './empleado.service';
   styleUrls: ['./empleados.component.css'],
 })
 export class EmpleadosComponent implements OnInit {
+  empleadoSeleccionado: Empleado | undefined;
   listaEmpleados: Empleado[] | undefined;
   paginator: any;
 
   constructor(
     private empleadoService: EmpleadoService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -25,12 +28,20 @@ export class EmpleadosComponent implements OnInit {
         page = +params.get('page')!;
       }
       if (!page) {
-        page = +0;
+        page = 0;
       }
       this.empleadoService.getEmpleados(page).subscribe((response) => {
         this.listaEmpleados = response.content as Empleado[];
         this.paginator = response;
       });
+    });
+    this.modalService.notificarUpload.subscribe((empleado) => {
+        this.listaEmpleados = this.listaEmpleados?.map((empleadoOriginal) => {
+          if (empleado.id == empleadoOriginal.id) {
+            empleadoOriginal.foto = empleado.foto;
+          }
+          return empleadoOriginal;
+        });
     });
   }
 
@@ -55,5 +66,10 @@ export class EmpleadosComponent implements OnInit {
         });
       }
     });
+  }
+
+  abrirModal(empleado: Empleado): void {
+    this.empleadoSeleccionado = empleado;
+    this.modalService.abrirModal();
   }
 }

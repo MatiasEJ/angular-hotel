@@ -1,3 +1,4 @@
+<app-detalles *ngIf="empleadoSeleccionado" [empleado]="empleadoSeleccionado"></app-detalles>
 <div class="card">
   <div class="card-header">
     <h1>Empleados</h1>
@@ -19,7 +20,11 @@
         </thead>
         <tbody>
           <tr *ngFor="let empleado of listaEmpleados">
-            <td><button class="btn btn-success" [routerLink]="['/empleados/detalle',empleado.id]">{{empleado.id}}</button> </td>
+            <td>
+              <img *ngIf="empleado?.foto" (click)="abrirModal(empleado)" src="http://localhost:8080/api/uploads/img/{{empleado?.foto}}" alt="{{empleado?.foto}}" class="img-thumbnail rounded" style="width:64px; cursor:pointer;">
+              <img *ngIf="!empleado?.foto" (click)="abrirModal(empleado)" src="http://localhost:8080/default.jpg" alt="sin Foto"
+              class="img-thumbnail rounded" style="width:64px; cursor:pointer;">
+            </td>
             <td>{{empleado.nombre}}</td>
             <td>{{empleado.apellido}}</td>
             <td>{{empleado.dni}}</td>

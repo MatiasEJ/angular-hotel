@@ -66,6 +66,7 @@ export class DetallesComponent implements OnInit {
         }else if(event.type ===  HttpEventType.Response){
           let response:any = event.body;
           this.empleado = response.empleado as Empleado;
+          this.modalService.notificarUpload.emit(this.empleado);
         Swal.fire("Imagen subida con exito.", 'success');
         }
         // console.log(empleado)

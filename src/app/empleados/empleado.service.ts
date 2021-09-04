@@ -101,7 +101,7 @@ export class EmpleadoService {
     formData.append("archivo",archivo);
     formData.append("id",id);
 
-    const req = new HttpRequest('POST','UrlEndPoints.EMPLEADO_UPLOAD',formData,{
+    const req = new HttpRequest('POST','http://localhost:8080/api/empleados/upload',formData,{
       reportProgress:true
     });
     
