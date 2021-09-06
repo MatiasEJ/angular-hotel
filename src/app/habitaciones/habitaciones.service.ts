@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Observable} from 'rxjs';
 import { UrlEndPoints } from '../util/endPoints';
 import { Habitacion } from './habitacion';
+import { Tematica } from './tematica';
+import { TipoHabitacion } from './tipo-hab';
 
 @Injectable({
   providedIn: 'root',
@@ -18,5 +20,11 @@ export class HabitacionesService {
 
   getListaHabitaciones(): Observable<Habitacion[]> {
     return this.http.get<Habitacion[]>(UrlEndPoints.LISTAHABITACIONES);
+  }
+  getAllTematicas(): Observable<Tematica[]> {
+    return this.http.get<Tematica[]>(UrlEndPoints.TEMATICAS);
+  }
+  getAllTipoHabitaciones(): Observable<TipoHabitacion[]> {
+    return this.http.get<TipoHabitacion[]>(UrlEndPoints.TIPOS_HABITACIONES);
   }
 }

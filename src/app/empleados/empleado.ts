@@ -6,5 +6,4 @@ export class Empleado {
   direccion: string | undefined;
   fechaNacimiento: string | undefined;
   foto:string | undefined;
-
 }

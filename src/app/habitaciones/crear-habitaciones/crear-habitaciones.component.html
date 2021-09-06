@@ -1,0 +1,59 @@
+<!-- <ul *ngIf="listErrors?.length" class="list-group">
+  <li class="list-group-item list-group-item-danger" *ngFor="let err of listErrors">{{err}}</li>
+</ul> -->
+
+<section class="py-4 bg-light mb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            <h1><i class="bi-file-person"></i>{{TITULO}}</h1>
+          </div>
+          <div class="card-body">
+            <form #habitacionForm="ngForm">
+
+              <div class="input-group mb-3">
+                <label class="input-group-text">num_id</label>
+                <input class="form-control" type="text" name="num_id"  />
+              </div>
+
+              <div class="input-group mb-3">
+                <select class="form-select"   name="tipoHabitacion" style="width:500px">
+                  <option selected>Tipo Habitacion</option>
+                  <option *ngFor="let tipo of tiposHabitacion" [ngValue]="tipo">{{tipo.nombre}}</option>
+                </select>
+              </div>
+
+              <div class="input-group mb-3">
+                <select class="form-select" name="tipoHabitacion" style="width:500px">
+                  <option selected>Tematica</option>
+                  <option *ngFor="let tematica of tematicas" [ngValue]="tematica">{{tematica.nombre}}</option>
+                </select>
+              </div>
+
+
+              <div class="input-group mb-3">
+                <label class="input-group-text">Precio Noche</label>
+                <input  class="form-control" type="text" name="precio_noche">
+              </div>
+
+              <div class="input-group mb-3">
+                <button class="btn btn-primary" [disabled]="!habitacionForm.form.valid" (click)="create()"
+                  >Crear</button>
+                <ng-template #elseBlock>
+                  <button class="btn btn-primary" [disabled]="!habitacionForm.form.valid"
+                    (click)="update()">Actualizar</button>
+                </ng-template>
+              </div>
+
+            </form>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

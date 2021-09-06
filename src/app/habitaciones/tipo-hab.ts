@@ -1,4 +1,4 @@
-export class TipoHab {
+export class TipoHabitacion {
   id:number|undefined;
   nombre:string|undefined;
   cantMaxHuespedes:number |undefined;

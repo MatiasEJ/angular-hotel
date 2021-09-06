@@ -19,6 +19,9 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from  '@angular/material/core';
 import { DetallesComponent } from './empleados/detalles/detalles.component';
+import { DetallesHabitacionComponent } from './habitaciones/detalles-habitacion/detalles-habitacion.component';
+import { CrearHabitacionesComponent } from './habitaciones/crear-habitaciones/crear-habitaciones.component';
+import { HabitacionesService } from './habitaciones/habitaciones.service';
 
 
 registerLocaleData(localeEs,'es');
@@ -30,7 +33,8 @@ const routes: Routes =[
   {path:'empleados/page/:page',component: EmpleadosComponent},
   {path:'empleados/altaEmpleados',component: FormComponent},
   {path:'empleados/altaEmpleados/:id',component: FormComponent},
-  {path:'habitaciones',component: HabitacionesComponent}
+  {path:'habitaciones',component: HabitacionesComponent},
+  {path:'habitaciones/altaHabitaciones',component: CrearHabitacionesComponent},
 ]
 
 @NgModule({
@@ -44,7 +48,9 @@ const routes: Routes =[
     FormComponent,
     HabitacionesComponent,
     PaginatorComponent,
-    DetallesComponent
+    DetallesComponent,
+    DetallesHabitacionComponent,
+    CrearHabitacionesComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,7 @@ const routes: Routes =[
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  providers: [EmpleadoService],
+  providers: [EmpleadoService,HabitacionesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

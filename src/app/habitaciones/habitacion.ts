@@ -1,11 +1,11 @@
 import { Tematica } from './tematica';
-import { TipoHab } from './tipo-hab';
+import { TipoHabitacion } from './tipo-hab';
 
 export class Habitacion {
   id:number|undefined;
   nombre:string|undefined;
-  numeroIden:string|undefined;
-  tipoHab:TipoHab|undefined;
+  num_id:string|undefined;
+  tipo_hab:TipoHabitacion|undefined;
   tematica:Tematica|undefined;
-  precioNoche:number|undefined;
+  precio_noche:number|undefined;
 }
